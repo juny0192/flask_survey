@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/app.css" />
+    <title>{% block title %}Survey Info{% endblock %}</title>
+  </head>
+  <body>
+    {% with messages = get_flashed_messages(with_categories=True) %} {% if
+    messages %} {% for category, msg in messages %}
+    <p class="{{category}}">{{ msg }}</p>
+    {% endfor %} {% endif %} {% endwith %}{% block content %}
+    <div>
+      <h1>{{title}}</h1>
+      <p>{{instructions}}</p>
+    </div>
+
+    <form action="/survey_start" method="POST">
+      <button class="button">Go to Survey</button>
+    </form>
+    {% endblock %}
+  </body>
+</html>
